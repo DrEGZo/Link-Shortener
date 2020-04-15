@@ -104,9 +104,12 @@
                 let link = encodeURIComponent(input.value);
                 fetch('/short/' + link + '/' + exp + '/' + inval).then(shortLink => {
                     if (shortLink.length != 5) output.value = shortLink;
-                    else output.value = location.hostname + '/' + shortLink;
+                    else {
+                        btn.disabled = false;
+                        btn.innerHTML = 'Erledigt <i class="fa fa-check"></i>';
+                        output.value = location.hostname + '/' + shortLink;
+                    }
                     document.getElementById('copy').innerText = 'Kopieren';
-                    btn.innerHTML = 'Erledigt <i class="fa fa-check"></i>';
                 });
             });
             let checkbox = document.getElementById('invalidate');
