@@ -20,6 +20,10 @@ app.get('/short/:link/:exp/:inval', (req, res) => {
         for (let id in data) {
             if (data[id].exp < Date.now()) delete data[id];
         }
+        if (Object.keys(data).length >= 1000) {
+            res.send('Server Overload');
+            return;
+        }
         let id;
         let map = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
         do {
