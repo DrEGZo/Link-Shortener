@@ -13,7 +13,7 @@ app.get('/short/:link/:exp/:inval', (req, res) => {
         '0': Date.now() + 24 * 60 * 60 * 1000,
         '1': Date.now() + 7 * 24 * 60 * 60 * 1000
     }
-    if (!link.match(/^(https?\:\/\/)?(\w+[.])+\w/)) res.send('Ungültiger Link');
+    if (!link.match(/^(https?\:\/\/)(\w+[.])+\w/)) res.send('Ungültiger Link');
     else fs.readFile(__dirname + '/data.json', (err, rawdata) => {
         if (err) throw err;
         let data = JSON.parse(rawdata);
@@ -59,7 +59,7 @@ app.get('/info/:id', (req, res) => {
         let data = JSON.parse(rawdata);
         if (id in data) {
             let link = data[id].link;
-            let match = link.match(/^(https?\:\/\/)?([\w.]+)/);
+            let match = link.match(/^(https?\:\/\/)([\w.]+)/);
             if (match) res.send(match[2]);
             else res.send('Ungültiger Link');
         }
