@@ -95,6 +95,7 @@
         let main = function() {
             let btn = document.getElementById('short');
             btn.addEventListener('click', () => {
+                btn.disabled = true;
                 let input = document.getElementById('input');
                 let output = document.getElementById('output');
                 let link = encodeURIComponent(input.value);
@@ -102,6 +103,7 @@
                     if (shortLink.length != 5) output.value = shortLink;
                     else output.value = location.hostname + '/' + shortLink;
                     document.getElementById('copy').innerText = 'Kopieren';
+                    btn.innerHTML = 'Erledigt<i class="fa fa-check"></i>';
                 });
             });
             let checkbox = document.getElementById('invalidate');
