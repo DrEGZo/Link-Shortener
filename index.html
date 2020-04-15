@@ -101,6 +101,7 @@
                 fetch('/short/' + link + '/' + exp + '/' + inval).then(shortLink => {
                     if (shortLink == 'Ungültiger Link') output.value = shortLink;
                     else output.value = location.hostname + '/' + shortLink;
+                    document.getElementById('copy').innerText = 'Kopieren';
                 });
             });
             let checkbox = document.getElementById('invalidate');
