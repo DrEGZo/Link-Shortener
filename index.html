@@ -75,6 +75,9 @@
             font-size: 18px;
             cursor: pointer;
         }
+        button:disabled {
+            cursor: default;
+        }
         .checkbox {
             color: #fff;
             background-color: rgb(255, 0, 76);
@@ -103,7 +106,7 @@
                     if (shortLink.length != 5) output.value = shortLink;
                     else output.value = location.hostname + '/' + shortLink;
                     document.getElementById('copy').innerText = 'Kopieren';
-                    btn.innerHTML = 'Erledigt<i class="fa fa-check"></i>';
+                    btn.innerHTML = 'Erledigt <i class="fa fa-check"></i>';
                 });
             });
             let checkbox = document.getElementById('invalidate');
